@@ -10,9 +10,9 @@
 body{background:#F8F5EF;color:#0F172A}
 header{position:fixed;top:0;width:100%;padding:20px 8%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:.3s}
 header.scrolled{background:rgba(15,23,42,.95);backdrop-filter:blur(8px)}
-.logo{font-size:30px;font-weight:700;color:#fff}
+.logo{font-size:30px;font-weight:700;color:#fff;display:flex;align-items:center;gap:12px}.logo-placeholder{width:50px;height:50px;border:2px dashed rgba(255,255,255,.7);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px}.lang-btn{margin-left:15px}
 nav a{color:#fff;text-decoration:none;margin-left:20px}
-.hero{height:100vh;background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('https://images.unsplash.com/photo-1582972236019-ea5a1c4c1f5d');background-size:cover;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;animation:zoom 20s alternate infinite}
+.hero{height:100vh;background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('https://images.unsplash.com/photo-1582972236019-ea5a1c4c1f5d');background-size:cover;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;animation:zoom 60s alternate infinite}
 @keyframes zoom{from{background-size:100%}to{background-size:110%}}
 .hero h1{font-size:60px}
 .search-box{background:#fff;padding:20px;border-radius:20px;display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
@@ -30,7 +30,7 @@ button,.btn{background:#D4A017;color:#fff;border:none;padding:14px 24px;border-r
 .counter{font-size:48px;font-weight:700}
 .cta{padding:100px 20px;text-align:center;color:#fff;background:linear-gradient(135deg,#0099D8,#00C2B8)}
 footer{background:#0F172A;color:#fff;text-align:center;padding:30px}
-.reveal{opacity:0;transform:translateY(40px);transition:.8s}
+.reveal{opacity:0;transform:translateY(40px);transition:.5s}
 .reveal.active{opacity:1;transform:none}
 .whatsapp{position:fixed;right:25px;bottom:25px;background:#25D366;color:#fff;width:65px;height:65px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:28px}
 @media(max-width:768px){.hero h1{font-size:42px}.stats{grid-template-columns:repeat(2,1fr)}}
@@ -95,7 +95,7 @@ margin-bottom:8px;
 </style>
 </head>
 <body>
-<header id="header"><div class="logo">Kairos Travel CTG</div><nav><a href="#">Inicio</a><a href="#">Tours</a><a href="#">Destinos</a><a href="#">Contacto</a></nav></header>
+<header id="header"><div class="logo"><div class="logo-placeholder">LOGO</div><span>Kairos Travel CTG</span></div><nav><button class="btn lang-btn" onclick="toggleLanguage()">EN</button><a href="#">Inicio</a><a href="#">Tours</a><a href="#">Destinos</a><a href="#">Contacto</a></nav></header>
 
 <section class="hero">
 <div>
@@ -103,32 +103,28 @@ margin-bottom:8px;
 <p>El momento perfecto para vivir Cartagena</p>
 <div class="search-box">
 <input type="date" id="fecha">
-<select id="experiencia">
-<option>Tour 5 Islas Premium</option>
-<option>Tour 4 Aventura</option>
-<option>Catamarán Sunset</option>
-</select>
+<select id="experiencia"></select>
 <button onclick="reservar()">Reservar Ahora</button>
 </div>
 </div>
 </section>
 
 <section class="section reveal">
-<h2>Experiencias Destacadas</h2><br>
+<h2>Experiencias Disponibles</h2><br>
 <div class="cards">
-<div class="card" onclick="abrirTour('tourCartagena')" style="cursor:pointer;"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"><div class="card-content"><h3>TOUR CARTAGENA</h3></div></div>
-<div class="card" onclick="abrirTour('tour5')" style="cursor:pointer;"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5"><div class="card-content"><h3>TOUR ISLAS</h3></div></div>
-<div class="card" onclick="abrirTour('tourCaminata')" style="cursor:pointer;"><img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13"><div class="card-content"><h3>TOUR CAMINATA</h3></div></div>
+<div class="card" onclick="abrirTour('tourCartagena')" style="cursor:pointer;"><img loading="lazy" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"><div class="card-content"><h3>TOUR CARTAGENA</h3></div></div>
+<div class="card" onclick="abrirTour('tour5')" style="cursor:pointer;"><img loading="lazy" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5"><div class="card-content"><h3>TOUR ISLAS</h3></div></div>
+<div class="card" onclick="abrirTour('tourCaminata')" style="cursor:pointer;"><img loading="lazy" src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13"><div class="card-content"><h3>TOUR CAMINATA</h3></div></div>
 </div>	
 </section>
 
 <section class="section reveal">
 <h2>Galería</h2><br>
 <div class="gallery">
-<img src="https://images.unsplash.com/photo-1519046904884-53103b34b206">
-<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
-<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
-<img src="https://images.unsplash.com/photo-1520637836862-4d197d17c90a">
+<img loading="lazy" src="https://images.unsplash.com/photo-1519046904884-53103b34b206">
+<img loading="lazy" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
+<img loading="lazy" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+<img loading="lazy" src="https://images.unsplash.com/photo-1520637836862-4d197d17c90a">
 </div>
 </section>
 
@@ -162,6 +158,10 @@ function reservar(){
  const fecha=document.getElementById('fecha').value;
  const exp=document.getElementById('experiencia').value;
  if(!fecha){alert('Selecciona una fecha');return;}
+ const hoy=new Date();
+ hoy.setHours(0,0,0,0);
+ const fechaSel=new Date(fecha+'T00:00:00');
+ if(fechaSel<hoy){alert('No puedes seleccionar fechas pasadas');return;}
  const m=`Hola Kairos Travel CTG.%0AQuiero reservar: ${exp}%0AFecha: ${fecha}`;
  window.open('https://wa.me/573000000000?text='+m,'_blank');
 }
@@ -276,6 +276,15 @@ modal.style.display='none';
 <li>Paradas para fotografías</li>
 <li>Hidratación incluida</li>
 </ul>
+
+<p>
+Duración: 8 horas
+</p>
+
+<p>
+Precio: $250.000 COP
+</p>
+
 <button class="btn" onclick="irAReserva()">Reservar ahora</button>
 </div>
 </div>
@@ -290,6 +299,15 @@ modal.style.display='none';
 <li>Historia y cultura</li>
 <li>Paradas gastronómicas</li>
 </ul>
+
+<p>
+Duración: 8 horas
+</p>
+
+<p>
+Precio: $250.000 COP
+</p>
+
 <button class="btn" onclick="irAReserva()">Reservar ahora</button>
 </div>
 </div>
@@ -301,6 +319,72 @@ document.addEventListener('DOMContentLoaded',()=>{
  if(fecha){
    fecha.min=new Date().toISOString().split('T')[0];
  }
+});
+</script>
+
+
+<script>
+const TOURS=[
+{
+ id:"tourCartagena",
+ nombre:"Tour Cartagena Histórica"
+},
+{
+ id:"tour5",
+ nombre:"Tour 5 Islas Premium"
+},
+{
+ id:"tourCaminata",
+ nombre:"Tour Caminata Cultural"
+}
+];
+
+document.addEventListener("DOMContentLoaded",()=>{
+ const select=document.getElementById("experiencia");
+ if(select){
+   select.innerHTML="";
+   TOURS.forEach(t=>{
+      const op=document.createElement("option");
+      op.value=t.nombre;
+      op.textContent=t.nombre;
+      select.appendChild(op);
+   });
+ }
+
+ const fecha=document.getElementById("fecha");
+ if(fecha){
+   fecha.min=new Date().toISOString().split("T")[0];
+ }
+});
+</script>
+
+
+<script>
+const textos={
+es:{
+title:"Descubre Cartagena como nunca antes",
+subtitle:"El momento perfecto para vivir Cartagena"
+},
+en:{
+title:"Discover Cartagena like never before",
+subtitle:"The perfect moment to experience Cartagena"
+}
+};
+let currentLang='es';
+function toggleLanguage(){
+ currentLang=currentLang==='es'?'en':'es';
+ document.querySelector('.hero h1').textContent=textos[currentLang].title;
+ document.querySelector('.hero p').textContent=textos[currentLang].subtitle;
+ document.querySelector('.lang-btn').textContent=currentLang==='es'?'EN':'ES';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+ const fecha=document.getElementById('fecha');
+ const today=new Date().toISOString().split('T')[0];
+ fecha.setAttribute('min',today);
+ fecha.addEventListener('input',function(){
+   if(this.value < today){ this.value=today; }
+ });
 });
 </script>
 
