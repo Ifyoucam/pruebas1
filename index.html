@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kairos Travel CTG</title>
+<link rel="icon" type="image/png" href="imagenes/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
 body{background:#F8F5EF;color:#0F172A}
 header{position:fixed;top:0;width:100%;padding:20px 8%;display:flex;justify-content:space-between;align-items:center;z-index:1000;transition:.3s}
 header.scrolled{background:rgba(15,23,42,.95);backdrop-filter:blur(8px)}
-.logo{font-size:30px;font-weight:700;color:#fff;display:flex;align-items:center;gap:12px}.logo-placeholder{width:50px;height:50px;border:2px dashed rgba(255,255,255,.7);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px}.lang-btn{margin-left:15px}
+.logo{text-decoration:none;font-size:30px;font-weight:700;color:#fff;display:flex;align-items:center;gap:12px}.logo-placeholder{width:50px;height:50px;border:2px dashed rgba(255,255,255,.7);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px}.lang-btn{margin-left:15px}
 nav a{color:#fff;text-decoration:none;margin-left:20px}
 .hero{height:100vh;background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url('imagenes/hero.jpg');background-size:cover;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;animation:zoom 60s alternate infinite}
 @keyframes zoom{from{background-size:100%}to{background-size:110%}}
@@ -117,10 +118,15 @@ margin-bottom:8px;
 <!-- ================= EXPERIENCIAS ================= -->
 <h2>Experiencias Disponibles</h2><br>
 <div class="cards">
-<div class="card" onclick="abrirTour('tourCartagena')" style="cursor:pointer;"><img loading="lazy" src="imagenes/1.jpg"><div class="card-content"><h3>TOUR CARTAGENA</h3></div></div>
-<div class="card" onclick="abrirTour('tour5')" style="cursor:pointer;"><img loading="lazy" src="imagenes/2.jpg"><div class="card-content"><h3>TOUR ISLAS</h3></div></div>
-<div class="card" onclick="abrirTour('tourCaminata')" style="cursor:pointer;"><img loading="lazy" src="imagenes/3.jpg"><div class="card-content"><h3>TOUR CAMINATA</h3></div></div>
-</div>	
+<div class="card" onclick="abrirTour('tourCartagena')" style="cursor:pointer;"><img loading="lazy" src="imagenes/1.jpg"><div class="card-content"><h3>TOUR CARTAGENA</h3><br><button class="btn" onclick="abrirTour('tourCartagena')">Mostrar más</button></div></div>
+<div class="card" onclick="abrirTour('tour5')" style="cursor:pointer;"><img loading="lazy" src="imagenes/2.jpg"><div class="card-content"><h3>TOUR ISLAS</h3><br><button class="btn" onclick="abrirTour('tour5')">Mostrar más</button></div></div>
+<div class="card" onclick="abrirTour('tourCaminata')" style="cursor:pointer;"><img loading="lazy" src="imagenes/3.jpg"><div class="card-content"><h3>TOUR CAMINATA</h3><br><button class="btn" onclick="abrirTour('tourCaminata')">Mostrar más</button></div></div>
+
+</div>
+<br><div style="text-align:center;margin-top:25px;">
+<button id="allExperiencesBtn" class="btn">Mostrar todas las experiencias</button>
+</div>
+
 </section>
 
 <section class="section reveal">
@@ -225,7 +231,7 @@ Duración: 8 horas
 </p>
 
 <p>
-Precio: $250.000 COP
+Precio: $250.000 COP / USD $65
 </p>
 
 <button class="btn" onclick="irAReserva()">
@@ -294,7 +300,7 @@ Duración: 8 horas
 </p>
 
 <p>
-Precio: $250.000 COP
+Precio: $250.000 COP / USD $65
 </p>
 
 <button class="btn" onclick="irAReserva()">Reservar ahora</button>
@@ -317,7 +323,7 @@ Duración: 8 horas
 </p>
 
 <p>
-Precio: $250.000 COP
+Precio: $250.000 COP / USD $65
 </p>
 
 <button class="btn" onclick="irAReserva()">Reservar ahora</button>
@@ -400,5 +406,127 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 
+
+
+<script>
+const traducciones={
+es:{
+inicio:"Inicio",
+tours:"Tours",
+destinos:"Destinos",
+contacto:"Contacto",
+experiencias:"Experiencias Disponibles",
+galeria:"Galería",
+testimonios:"Testimonios",
+reservar:"Reservar Ahora",
+hero:"Descubre Cartagena como nunca antes",
+sub:"El momento perfecto para vivir Cartagena",
+cta:"Reserva tu experiencia",
+ctaTitle:"El momento perfecto para vivir Cartagena",
+hours:"Horas atención",
+support:"Atención al cliente",
+clients:"Clientes satisfechos",
+done:"Tours realizados",
+tour1:"TOUR CARTAGENA",
+tour2:"TOUR ISLAS",
+tour3:"TOUR CAMINATA",
+more:"Mostrar más", allExp:"Mostrar todas las experiencias"
+},
+en:{
+inicio:"Home",
+tours:"Tours",
+destinos:"Destinations",
+contacto:"Contact",
+experiencias:"Available Experiences",
+galeria:"Gallery",
+testimonios:"Testimonials",
+reservar:"Book Now",
+hero:"Discover Cartagena like never before",
+sub:"The perfect moment to experience Cartagena",
+cta:"Book your experience",
+ctaTitle:"The perfect moment to experience Cartagena",
+hours:"Support Hours",
+support:"Customer Support",
+clients:"Satisfied Customers",
+done:"Tours Completed",
+tour1:"CARTAGENA TOUR",
+tour2:"ISLAND TOUR",
+tour3:"WALKING TOUR",
+more:"Show more", allExp:"Show all experiences"
+}
+};
+
+function toggleLanguage(){
+ const lang=document.querySelector('.lang-btn').textContent==='EN'?'en':'es';
+ const t=traducciones[lang];
+
+ const nav=document.querySelectorAll('nav a');
+ nav[0].textContent=t.inicio;
+ nav[1].textContent=t.tours;
+ nav[2].textContent=t.destinos;
+ nav[3].textContent=t.contacto;
+
+ document.querySelector('.hero h1').textContent=t.hero;
+ document.querySelector('.hero p').textContent=t.sub;
+
+ document.querySelectorAll('h2')[0].textContent=t.experiencias;
+ document.querySelectorAll('h2')[1].textContent=t.galeria;
+ document.querySelectorAll('h2')[2].textContent=t.testimonios;
+ document.querySelector('.cta h2').textContent=t.ctaTitle;
+
+ document.querySelector('.search-box button').textContent=t.reservar;
+ document.querySelector('.cta button').textContent=t.cta;
+
+ const stats=document.querySelectorAll('.stats p');
+ if(stats.length>=4){
+   stats[0].textContent=t.hours;
+   stats[1].textContent=t.support;
+   stats[2].textContent=t.clients;
+   stats[3].textContent=t.done;
+ }
+
+ 
+const cards=document.querySelectorAll('.card h3');
+if(cards.length>=3){
+ cards[0].textContent=t.tour1;
+ cards[1].textContent=t.tour2;
+ cards[2].textContent=t.tour3;
+}
+
+
+document.querySelectorAll('.card .btn').forEach(b=>b.textContent=t.more);
+
+const allBtn=document.getElementById('allExperiencesBtn');
+if(allBtn) allBtn.textContent=t.allExp;
+
+// Modal Cartagena
+const modals=document.querySelectorAll('.modal');
+if(lang==='en'){
+ if(modals[1]) modals[1].querySelector('p').textContent='Visit the most iconic places in Cartagena.';
+ if(modals[2]) modals[2].querySelector('p').textContent='Discover local culture on foot.';
+ if(modals[0]) modals[0].querySelector('p').textContent='Enjoy an exclusive experience visiting Cartagena’s best islands.';
+
+ document.querySelectorAll('.modal .btn').forEach(b=>b.textContent='Book Now');
+}else{
+ if(modals[1]) modals[1].querySelector('p').textContent='Recorre los lugares más emblemáticos de Cartagena.';
+ if(modals[2]) modals[2].querySelector('p').textContent='Descubre la cultura local a pie.';
+ if(modals[0]) modals[0].querySelector('p').textContent='Disfruta una experiencia exclusiva visitando las mejores islas de Cartagena.';
+
+ document.querySelectorAll('.modal .btn').forEach(b=>b.textContent='Reservar ahora');
+}
+
+
+// Modales
+const modalTitles=document.querySelectorAll('.modal h2');
+if(modalTitles.length>=3){
+ modalTitles[0].textContent=lang==='en'?'Historical Cartagena Tour':'Tour Cartagena Histórica';
+ modalTitles[1].textContent=lang==='en'?'Premium 5 Islands Tour':'Tour 5 Islas Premium';
+ modalTitles[2].textContent=lang==='en'?'Cultural Walking Tour':'Tour Caminata Cultural';
+}
+
+ document.querySelector('.lang-btn').textContent=lang==='en'?'ES':'EN';
+}
+</script>
 </body>
+
 </html>
