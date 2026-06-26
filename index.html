@@ -98,7 +98,7 @@ margin-bottom:8px;
 <body>
 
 <!-- ================= HEADER ================= -->
-<header id="header"><a href="#" class="logo"><img src="imagenes/logo.png" alt="Logo" style="width:55px;height:55px;object-fit:contain;"><span>Kairos Travel CTG</span></a><nav><button class="btn lang-btn" onclick="toggleLanguage()">EN</button><a href="tours.html">Tours</a><a href="#">Destinos</a><a href="#">Contacto</a></nav></header>
+<header id="header"><a href="#" class="logo"><img src="imagenes/logo.png" alt="Logo" style="width:55px;height:55px;object-fit:contain;"><span>Kairos Travel CTG</span></a><nav><button class="btn lang-btn" onclick="toggleLanguage()">EN</button><a href="#"> Tours</a><a href="tours.html"> Destinos</a><a href="#">Contacto</a></nav></header>
 
 
 <!-- ================= HERO / RESERVAS ================= -->
@@ -124,7 +124,7 @@ margin-bottom:8px;
 
 </div>
 <br><div style="text-align:center;margin-top:25px;">
-<button id="allExperiencesBtn" class="btn">Mostrar todas las experiencias</button>
+<button id="allExperiencesBtn" class="btn" onclick="window.location.href='tours.html'">Mostrar todas las experiencias</button>
 </div>
 
 </section>
@@ -162,14 +162,14 @@ margin-bottom:8px;
 
 <footer>
 <h3>Kairos Travel CTG</h3>
-<p>📞 +57 300 141 1917</p>
-<p>📱 WhatsApp: +57 300 141 1917</p>
+<p>📞 +57 300 000 0000</p>
+<p>📱 WhatsApp: +57 300 000 0000</p>
 <p>📧 contacto@kairostravel.com</p>
 <br>
 <p>© 2026 Kairos Travel CTG</p>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/573001411917" target="_blank">💬</a>
+<a class="whatsapp" href="https://wa.me/573000000000" target="_blank">💬</a>
 
 <script>
 function reservar(){
@@ -181,7 +181,7 @@ function reservar(){
  const fechaSel=new Date(fecha+'T00:00:00');
  if(fechaSel<hoy){alert('No puedes seleccionar fechas pasadas');return;}
  const m=`Hola Kairos Travel CTG.%0AQuiero reservar: ${exp}%0AFecha: ${fecha}`;
- window.open('https://wa.me/573001411917?text='+m,'_blank');
+ window.open('https://wa.me/573000000000?text='+m,'_blank');
 }
 window.addEventListener('scroll',()=>{
  document.getElementById('header').classList.toggle('scrolled',window.scrollY>50);
@@ -342,19 +342,34 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 <script>
-const TOURS=[
-{
- id:"tourCartagena",
- nombre:"Tour Cartagena Histórica"
-},
-{
- id:"tour5",
- nombre:"Tour 5 Islas Premium"
-},
-{
- id:"tourCaminata",
- nombre:"Tour Caminata Cultural"
-}
+const TOURS = [
+    { id: "isla-privada-vip", nombre: "Isla Privada Luxury VIP / Beach" },
+    { id: "mangata", nombre: "Mangata" },
+    { id: "isla-palma", nombre: "Isla Palma" },
+    { id: "experiencias-generales", nombre: "Experiencias Generales" },
+    { id: "tritones", nombre: "Tritones" },
+    { id: "top3-islas-encanto", nombre: "Top 3 Islas del Encanto" },
+    { id: "5-islas-encanto", nombre: "5 Islas del Encanto" },
+    { id: "volcan-totumo", nombre: "Volcán del Totumo" },
+    { id: "3-islas-top", nombre: "3 Islas Top" },
+    { id: "sabai", nombre: "Sabai" },
+    { id: "4-destinos", nombre: "4 Destinos" },
+    { id: "baru-islas", nombre: "Barú + Islas" },
+    { id: "mantas-beach", nombre: "Mantas Beach" },
+    { id: "family-plan", nombre: "Family Plan" },
+    { id: "tour-bahia-catamaran", nombre: "Tour Bahía Catamarán" },
+    { id: "5-destinos-vip", nombre: "5 Destinos VIP" },
+    { id: "city-tour-vip", nombre: "City Tour VIP" },
+    { id: "aviario-nacional", nombre: "Aviario Nacional" },
+    { id: "vistamar-beach-club", nombre: "Vistamar Beach Club" },
+    { id: "tour-atardecer-bahia", nombre: "Tour Atardecer Bahía" },
+    { id: "5-islas-vip", nombre: "5 Islas VIP" },
+    { id: "sunset-beach", nombre: "Sunset Beach" },
+    { id: "santa-marta-barranquilla", nombre: "Santa Marta + Barranquilla" },
+    { id: "isla-fenix", nombre: "Isla Fénix" },
+    { id: "fenix-full", nombre: "Fénix Full" },
+    { id: "cena-fenix", nombre: "Cena Fénix" },
+    { id: "bote-rumba", nombre: "Bote Rumba" }
 ];
 
 document.addEventListener("DOMContentLoaded",()=>{
